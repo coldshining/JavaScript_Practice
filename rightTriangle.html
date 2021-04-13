@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function star(k) {
+        for (let i = 1; i <= k; i++) {
+            for (let j = 1; j <= i; j++) {
+                document.write("*");
+            }
+            document.write("<br>");
+        }
+do{
+    let sum = prompt("请输入一个整数：");
+    if(Number(sum)>0&&parseInt(sum)==parseFloat(sum)) {
+
+        star(sum);
+    }
+    else {
+alert("输入错误，请输入一个正整数");
+    }
+}
+while(!Number(sum)>0&&parseInt(sum)==parseFloat(sum));
+</script>
+</body>
+</html>

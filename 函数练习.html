@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+       // 定义一个函数，判断一个数字是否是偶数，如果是返回true，如果不是，返回false。
+    function selection(b){
+        return b%2==0;
+    }
+     let a = selection (1);
+    console.log("a="+a);
+    //定义一个函数，可以根据半径计算一个圆的面积，并返回计算结果。
+       function mini(r){
+           return 3.14*r*r;
+       }
+       let result = mini(2);
+       console.log("result="+result);
+       /*
+       * 创建一个函数，可以在控制台输出一个人的信息。
+       * 实参可以是任意的数据类型，也可以是一个对象
+       * 当参数过多时，可以将参数封装到一个对象中，然后通过对象传递。
+       * */
+       function people(o){
+           console.log("我叫"+o.name+"性别"+o.gender+"我今年"+o.age+"岁了"+"我住在"+o.address);
+
+       }
+     //  people("jack",13,"male","Beijing");
+       let obj = {
+           name: "jack",
+           age: 13,
+           gender: "male",
+           address: "Beijing"
+       }
+       /*
+       *mini()
+       *   调用函数
+       *     相当于使用函数的返回值
+       * mini
+       *  函数对象
+       *     相当于直接使用函数对象
+       * */
+       fun2(mini(10));
+       fun2(mini);
+     </script>
+
+
+</head>
+<body>
+
+</body>
+</html>
