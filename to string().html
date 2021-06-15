@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+/*
+* 在页面直接打印一个对象时，实际上是输出的对象的toString()方法的返回值；
+* 为对象添加一个toString方法，修改对象的输出内容。
+*
+* */
+function Person(name,age,gender) {
+    this.name = name;
+    this.age = age;
+    this.gender = gender;}
+    let object1 = new Person("jack",12,"male");
+   /* object.toString =function(){
+        return "jack";
+    }*/
+   // alert(object1);
+let object2 = new Person("mary",12,"male");
+//修改Person原型的toString
+Person.prototype.toString = function(){
+    return "name = "+this.name+",age = "+this.age+",gender ="+this.gender+"";
+}
+alert(object1);
+alert(object2);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
