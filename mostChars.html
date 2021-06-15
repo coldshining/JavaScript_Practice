@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <title>统计出现次数最多的字符</title>
+    <script>
+/*
+* 核心算法：
+* 首先利用charAt()遍历这个字符串
+* 每个字符都存储给对象，如果对象没有该属性，就为1，如果有就+1
+*遍历对象，得到最大值和该字符
+* */
+        let str = '1242663819137';
+        let obj ={};
+        for(let i = 0 ;i<str.length;i++){
+            let chars = str.charAt(i);
+                if(obj[chars]){   //obj[chars]得到的是属性值
+                    obj[chars]++;
+                }
+                else{
+                   obj[chars] = 1;
+                }
+        }
+         let max = 0;
+        let ch = '';
+        for(let k in obj){
+            if(max<obj[k]){
+                max = obj[k];
+                ch = k;
+            }
+        }
+        console.log(max);
+        console.log('出现次数最多的字符是'+ch);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
