@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>发布删除留言</title>
+    <style>
+*{
+    margin:0;
+    padding:0;
+}
+body{
+    padding:100px;
+}
+        textarea{
+            width:200px ;
+            height:100px ;
+            border:1px solid pink;
+            outline:none;
+            resize:none;
+        }
+        ul{
+            margin-top:50px;
+        }
+        ul li a{
+            margin-left:20px;
+        }
+    </style>
+</head>
+<body>
+<textarea name="" id="" >
+</textarea>
+<button>发布</button>
+<ul></ul>
+<script>
+    let button = document.querySelector('button');
+    let textarea = document.querySelector('textarea');
+    let ul = document.querySelector('ul');
+    button.onclick=function(){
+        if(textarea.value==''){ alert("您没有输入内容！")}
+      else {
+            let li = document.createElement('li');
+            li.innerHTML=textarea.value +"<a href ='javascript:;'>删除</a>" ;
+            ul.appendChild(li);
+            let as = document.querySelectorAll('a');
+            for(let i =0 ;i<as.length;i++){
+                as[i].onclick=function(){
+                    //node.removeChild(child);
+                    ul.removeChild(this.parentNode);
+        }
+    }
+        }
+    }
+
+</script>
+</body>
+</html>
