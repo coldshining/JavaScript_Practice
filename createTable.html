@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态生成表格</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        table{
+            width:500px;
+            margin:100px auto 0;
+            border-collapse:collapse;
+            text-align: center;
+        }
+    td,th{
+          border:1px solid #333;
+        }
+       thead tr{
+       height:40px;
+           background-color: #ccc;
+       }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+        <tr>
+            <th>姓名</th>
+            <th>科目</th>
+            <th>成绩</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <script>
+     let data = [
+         {name:"mark",
+         course:"Javascript",
+             score:"100"
+         },
+         {name:"marry",
+             course:"Javascript",
+             score:"98"
+         },
+         {
+             name:"Audry",
+             course:"javascript",
+             score:"99"
+         },
+         {
+             name:"jenny",
+             course:"Javascript",
+             score:"88"}
+     ]
+     let tbody = document.querySelector('tbody');
+     for(let i = 0;i<data.length;i++){
+        let tr = document.createElement('tr');
+         tbody.appendChild(tr);
+         for(let k in data[i]){
+               let td = document.createElement('td');
+               td.innerHTML = data[i][k];
+               tr.appendChild(td);
+         }
+         let td = document.createElement('td');
+         td.innerHTML ='<a href = "javaScript:;">删除</a>';
+         tr.appendChild(td);
+     }
+     let as = document.querySelectorAll('a');
+     for(let i = 0;i<as.length;i++){
+         as[i].onclick = function(){
+             tbody.removeChild(this.parentNode.parentNode);
+         }
+     }
+    </script>
+</body>
+</html>
