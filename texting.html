@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        input{
+         outline: none;
+        }
+    </style>
+</head>
+<body>
+<input type="number">
+<button>发送</button>
+<script>
+    let con = document.querySelector('input');
+    let btn = document.querySelector('button');
+    let time = 3;
+    btn.addEventListener('click',function(){
+        btn.disabled = true;
+       let t = setInterval(function(){
+            if(time == 0){
+                clearInterval(t);
+                btn.disabled = false;
+                btn.innerHTML = '发送';
+                time = 3;
+            }else{
+                btn.innerHTML = '还剩下'+time+'秒';
+                time--;}
+        },1000)})
+
+
+
+</script>
+</body>
+</html>
