@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <style>
+        div{
+            width: 200px;
+            font-weight: 700;
+            font-size: 20px;
+            margin:100px auto;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<script>
+    let div = document.querySelector('div');
+    let a = location.search.substr(1);
+    a = a.split('=');
+   div.innerHTML = a[1]+', 欢迎您回来！';
+</script>
+</body>
+</html>
