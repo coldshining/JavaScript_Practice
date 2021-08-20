@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>返回顶部</title>
+    <style>
+        .m{
+            width: 1200px;
+            margin: 10px auto;
+        }
+        .head {
+            height: 150px;
+            background-color: purple;
+        }
+
+        .banner {
+            height: 250px;
+            background-color: skyblue;
+        }
+
+        .main {
+            height: 1000px;
+            background-color: yellowgreen;
+        }
+        .slider{
+            position: absolute;
+            width:45px ;
+            height:130px;
+            left:50%;
+            top:300px;
+            margin-left:600px;
+            background-color: hotpink;
+        }
+        .txt{
+            display:none;
+        }
+    </style>
+</head>
+<body>
+<div class="slider"><span class="txt">返回顶部</span></div>
+    <div class="head m"></div>
+    <div class="banner m"></div>
+    <div class="main m"></div>
+<script>
+// 获取元素
+let slider = document.querySelector('.slider');
+let banner = document.querySelector('.banner');
+let txt = document.querySelector('.txt');
+let main = document.querySelector('.main');
+// 一开始banner部分距离浏览器顶部的距离，必须写到滚动的外面
+let bannerTop = banner.offsetTop;
+let sliderTop = slider.offsetTop - bannerTop;
+let mainTop = main.offsetTop;
+document.addEventListener('scroll',function(){
+    if(window.pageYOffset >= mainTop){
+         txt.style.display = 'block';
+    }else{
+        txt.style.display = 'none';
+    }
+})
+// 页面滚动
+document.addEventListener('scroll',function(){
+    // window.pageYOffset被卷去的头部
+    if(window.pageYOffset>=bannerTop){
+        slider.style.position = 'fixed';
+        slider.style.top = sliderTop+'px';
+    }else{
+        slider.style.position = 'absolute';
+        slider.style.top = 300+'px';
+    }
+})
+// 点击了返回顶部模块，就让窗口滚动到页面的最上方
+txt.addEventListener('click',function(){
+    // window.scroll 滚动窗口至文档中的特定位置 里面的x、y不跟单位
+   animate(window,0)
+})
+function animate(obj, target, callback){
+    // 先清除以前的定时器，只保留当前的一个定时器执行
+    clearInterval(obj.timer);
+    obj.timer= setInterval(function(){
+        // 步长写到定时器里面
+        let step = (target - window.pageYOffset)/10;
+        // 把步长值改为整数，不要出现小数的问题
+        step = step>0?Math.ceil(step):Math.floor(step);
+        if(window.pageYOffset==target){
+            // 停止动画，本质是停止定时器
+            clearInterval(obj.timer);
+            // 回调函数写到定时器里面结束
+            if(callback)
+            {
+                callback();
+            }
+        }
+        // 缓慢动画，把步长改为一个慢慢
+        // 变小的值   步长公式：（目标值-现在的位置）/10；
+        // obj.style.left = obj.offsetLeft+step+'px';
+        window.scroll(0 ,window.pageYOffset + step);
+    },15)
+}
+</script>
+</body>
+</html>
