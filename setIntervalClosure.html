@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>闭包应用：3秒钟之后，打印li元素的所有内容</title>
+</head>
+<body>
+<ul class="wrap">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+</ul>
+<script>
+    let lis = document.querySelector('.wrap').querySelectorAll('li');
+    // 利用立即执行函数
+    for(let i=0;i<lis.length;i++){
+        (function(j){
+           setTimeout(function(){
+               console.log(lis[j].innerHTML)
+           },3000)
+       })(i);
+    }
+    // setTimeout(function(){
+    //     for(let i = 0;i<lis.length;i++){
+    //         console.log(lis[i].innerHTML);
+    //     }
+    // },3000)
+</script>
+</body>
+</html>
